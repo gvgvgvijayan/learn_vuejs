@@ -58,9 +58,9 @@ var app7 = new Vue({
     el: '#app-7',
     data: {
         groceryList: [
-            { id: 0, text: 'Apple'},
-            { id: 1, text: 'Banana'},
-            { id: 2, text: 'Clove'}
+            {id: 0, text: 'Apple'},
+            {id: 1, text: 'Banana'},
+            {id: 2, text: 'Clove'}
         ]
     }
 });
@@ -68,16 +68,88 @@ var app7 = new Vue({
 var app8 = new Vue({
     el: '#app-8',
     data: {
-        message: 'Hello'
+        message: 'Hello',
+        firstName: 'Vijayan',
+        lastName: 'Ganesh'
     },
     computed: {
-        reversedMessage1: function() {
+        reversedMessage1: function () {
             return this.message.split('').reverse().join('');
+        },
+        now: function () {
+            return Date.now();
+        },
+        fullName: {
+            get: function () {
+                return this.firstName + ' ' + this.lastName;
+            },
+            set: function (newValue) {
+                var names = newValue.split(' ');
+                this.firstName = names[0];
+                this.lastName = names[names.length - 1];
+            }
         }
     },
     methods: {
-        reversedMessage: function() {
+        reversedMessage: function () {
             return this.message.split('').reverse().join('');
+        }
+    }
+});
+
+var app9 = new Vue({
+    el: '#app-9',
+    data: {
+        question: '',
+        answer: 'I cannot give you an answer until you ask a question!',
+        img: '#'
+    },
+    watch: {
+        question: function (newQuestion, oldQuestion) {
+            this.answer = 'Waiting for you to stop typing...';
+            this.debouncedGetAnswer();
+        }
+    },
+    created: function () {
+        this.debouncedGetAnswer = _.debounce(this.getAnswer, 500);
+    },
+    methods: {
+        getAnswer: function () {
+            if (this.question.indexOf('?') === -1) {
+                this.answer = 'Questions usually contain a question mark. ;-)'
+                return;
+            }
+
+            this.answer = 'Thinking...';
+
+            var vm = this;
+
+            axios.get('https://yesno.wtf/api')
+                    .then(function (response) {
+                        vm.answer = _.capitalize(response.data.answer);
+                        vm.img = response.data.image;
+                    })
+                    .catch(function (error) {
+                        vm.answer = 'Error! Could not reach the API. ' + error;
+                    });
+        }
+    }
+});
+
+var app10 = new Vue({
+    el: '#app-10',
+    data: {
+        isActive: true,
+        hasError: true,
+        error: null,
+        hasError1: 'hero'
+    },
+    computed: {
+        classObject: function() {
+            return {
+                active: this.isActive && !this.error,
+                'text-danger': this.error && this.error.type === 'fatal'
+            };
         }
     }
 });

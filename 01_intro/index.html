@@ -48,6 +48,22 @@
     <p>Original message: "{{ message }}"</p>
     <p>Computed reversed message: "{{ reversedMessage1 }}"</p>
     <p>Reversed message: "{{ reversedMessage() }}"</p>
+    <p>Current Date: "{{ now }}"</p>
 </div>
 
+<div id="app-9">
+    <p>
+        Ask a yes/no question:
+        <input v-model="question">
+    </p>
+    <p>{{ answer }}</p>
+    <img :src="img">
+</div>
+
+<div id="app-10">
+    <div :class="[{ hero1: hasError }, classObject]"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
 <script src="main.js"></script>
