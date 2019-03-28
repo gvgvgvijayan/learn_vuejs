@@ -153,3 +153,29 @@ var app10 = new Vue({
         }
     }
 });
+
+//Event:start
+var app11 = new Vue({
+    el: '#app-11',
+    data: {
+        counter: 0
+    }
+});
+
+var app12 = new Vue({
+    el: '#app-12',
+    data: {
+        name: 'Vue.js'
+    },
+    methods: {
+        greet: function(event) {
+            alert('Hello ' + this.name + '!');
+            
+            if(event) {
+                alert(event.target.tagName);
+            }
+        }
+    }
+});
+
+//Event:end

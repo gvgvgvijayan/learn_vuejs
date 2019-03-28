@@ -64,6 +64,17 @@
     <div :class="[{ hero1: hasError }, classObject]"></div>
 </div>
 
+<!-- Event:start -->
+<div id="app-11">
+    <button @click="counter += 1">Add 1</button>
+    <p>The button above has been clicked {{ counter }} times.</p>
+</div>
+
+<div id="app-12">
+    <button @click="greet">Greet</button>
+</div>
+<!-- Event:end -->
+
 <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
 <script src="main.js"></script>
