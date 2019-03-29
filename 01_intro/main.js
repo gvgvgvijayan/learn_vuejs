@@ -179,3 +179,18 @@ var app12 = new Vue({
 });
 
 //Event:end
+
+//Components: start
+Vue.component('button-counter', {
+    data: function() {
+        return {
+            count: 0
+        };
+    },
+    template: '<button @click="count++">{{ count }}</button>'
+});
+
+new Vue({
+    el: '#components-demo'
+});
+//Components: end
