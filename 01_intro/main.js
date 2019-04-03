@@ -194,3 +194,34 @@ new Vue({
     el: '#components-demo'
 });
 //Components: end
+
+//Transitions & animation:start
+var transitionDemo = new Vue({
+    el: '#transition-demo',
+    data: {
+        show: true
+    }
+});
+
+var transitionDemo1 = new Vue({
+    el: '#transition-demo-1',
+    data: {
+        show: true
+    }
+});
+
+var animationDemo = new Vue({
+    el: '#animation-demo',
+    data: {
+        show: true
+    }
+});
+
+var customTransitionDemo = new Vue({
+    el: '#custom-transition',
+    data: {
+        show: true
+    }
+});
+
+//Transitions & animation:end
